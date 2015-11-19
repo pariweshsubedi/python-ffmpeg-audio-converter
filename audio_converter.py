@@ -12,26 +12,25 @@ class AudioConverter:
         print msg
         return
 
-    def convert_to_mp3(self,file):
+    def convert_to_mp3(self):
         """
         @param : 
             file: file name that is to be converted to mp3
 
         command: ffmpeg -i input.m4a -acodec libmp3lame -ab 128k output.mp3
         """
-        if file.split(".")[1] == "mp3":
+        if self.file_name.split(".")[1] == "mp3":
             return
 
         codec = "libmp3lame"
-        input_filename = file 
         try:
-            mp3_filename = input_filename.split(".")[0] + ".mp3"
+            mp3_filename = self.file_name.split(".")[0] + ".mp3"
         except:
             self._render_error("Error while processing file name")
             return 
 
         command = [self.FFMPEG_BIN,
-                    "-i",input_filename,
+                    "-i",self.file_name,
                     "-acodec",codec,
                     "-ab", "128k",
                     mp3_filename
@@ -39,29 +38,30 @@ class AudioConverter:
 
         return self._convert(command)
 
-    def convert_to_ogg(self,file):
+    def convert_to_ogg(self):
         """
         @param : 
             file: file name that is to be converted to ogg
         
         command: ffmpeg -i input.m4a -acodec libvorbis -aq 60 -vn -ac 2 output.ogg
         """
-        if file.split(".")[1] == "ogg":
+        if self.file_name.split(".")[1] == "ogg":
             return
 
-        codec = "libmp3lame"
-        input_filename = file.name #correct this file name
+        codec = "libvorbis"        
 
         try:
-            ogg_filename = input_filename.split(".")[0] + ".ogg"
+            ogg_filename = self.file_name.split(".")[0] + ".ogg"
         except:
             self._render_error("Error while processing file name")
             return 
 
         command = [self.FFMPEG_BIN,
-                        "-i",input_filename,
+                        "-i",self.file_name,
                         "-acodec",codec,
-                        "-ab", "128k",
+                        "-aq", "60",
+                        "-vn",
+                        "-ac", "2",
                         ogg_filename
                     ]
 
@@ -112,6 +112,6 @@ if __name__ == "__main__":
     for f in files:
         converter = AudioConverter(f)
         if convert_to == "mp3":
-            converter.convert_to_mp3(f)
+            converter.convert_to_mp3()
         elif convert_to == "ogg":
-            convert_to.convert_to_ogg(f)   
+            convert_to.convert_to_ogg()   

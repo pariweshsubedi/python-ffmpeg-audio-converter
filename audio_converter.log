@@ -1,0 +1,189 @@
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+audio.m4a: No such file or directory
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+audio.m4a: No such file or directory
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+audio.m4a: No such file or directory
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.m4a':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    creation_time   : 2036-03-29 06:33:54
+  Duration: 00:00:03.85, start: 0.000000, bitrate: 245 kb/s
+    Stream #0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 126 kb/sInput #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.m4a':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    creation_time   : 2036-03-29 06:33:54
+  Duration: 00:00:03.85, start: 0.000000, bitrate: 245 kb/s
+    Stream #0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 126 kb/s (default) (default)
+
+    Metadata:
+    Metadata:
+      creation_time   :       creation_time   : 2036-03-29 06:33:542036-03-29 06:33:54
+
+[ogg @ 0x317fba0] Unsupported codec id in stream 0
+Output #0, ogg, to '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.ogg':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+Output #0, mp3, to '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.mp3':
+    compatible_brands: M4A mp42isom  Metadata:
+
+    encoder         :     major_brand     : Lavf57.4.100
+M4A 
+    minor_version   :     Stream #0:00(eng)
+: Audio: mp3 (libmp3lame), 44100 Hz, mono, fltp, 128 kb/s (default)    compatible_brands: 
+M4A mp42isom    Metadata:
+
+      creation_time   :     TSSE            : 2036-03-29 06:33:54Lavf57.4.100
+
+      encoder         : Lavc57.6.100 libmp3lame
+Stream mapping:
+  Stream #0:0 -> #0:0    Stream #0:0 (aac (native) -> mp3 (libmp3lame))
+(eng)Could not write header for output file #0 (incorrect codec parameters ?): Invalid argument
+: Audio: mp3 (libmp3lame), 44100 Hz, mono, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2036-03-29 06:33:54
+      encoder         : Lavc57.6.100 libmp3lame
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+size=      61kB time=00:00:03.86 bitrate= 130.0kbits/s    
+video:0kB audio:61kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.896026%
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+ffmpeg version N-76045-g97be5d4 Copyright (c) 2000-2015 the FFmpeg developers
+  built with gcc 4.8 (Ubuntu 4.8.4-2ubuntu1~14.04)
+  configuration: --extra-libs=-ldl --prefix=/opt/ffmpeg --enable-avresample --disable-debug --enable-nonfree --enable-gpl --enable-version3 --enable-libopencore-amrnb --enable-libopencore-amrwb --disable-decoder=amrnb --disable-decoder=amrwb --enable-libpulse --enable-libdcadec --enable-libfreetype --enable-libx264 --enable-libx265 --enable-libfdk-aac --enable-libvorbis --enable-libmp3lame --enable-libopus --enable-libvpx --enable-libspeex --enable-libass --enable-avisynth --enable-libsoxr --enable-libxvid --enable-libvo-aacenc --enable-libvidstab
+  libavutil      55.  4.100 / 55.  4.100
+  libavcodec     57.  6.100 / 57.  6.100
+  libavformat    57.  4.100 / 57.  4.100
+  libavdevice    57.  0.100 / 57.  0.100
+  libavfilter     6. 11.100 /  6. 11.100
+  libavresample   3.  0.  0 /  3.  0.  0
+  libswscale      4.  0.100 /  4.  0.100
+  libswresample   2.  0.100 /  2.  0.100
+  libpostproc    54.  0.100 / 54.  0.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.m4a':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    creation_time   : 2036-03-29 06:33:54
+  Duration: 00:00:03.85, start: 0.000000, bitrate: 245 kb/s
+    Stream #0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 126 kb/s (default)
+    Metadata:
+      creation_time   : Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.m4a':
+2036-03-29 06:33:54
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    creation_time   : 2036-03-29 06:33:54
+  Duration: 00:00:03.85, start: 0.000000, bitrate: 245 kb/s
+    Stream #0:0(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 126 kb/s (default)
+    Metadata:
+      creation_time   : 2036-03-29 06:33:54
+Output #0, mp3, to '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.mp3':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    TSSE            : Lavf57.4.100
+    Stream #0:0(eng): Audio: mp3 (libmp3lame), 44100 Hz, mono, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2036-03-29 06:33:54
+      encoder         : Lavc57.6.100 libmp3lame
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+size=      61kB time=00:00:03.86 bitrate= 130.0kbits/s    
+video:0kB audio:61kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.896026%
+Output #0, ogg, to '/home/pariwesh/Desktop/canvas_test/audio_converter/audio_tests/audio.ogg':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 0
+    compatible_brands: M4A mp42isom
+    encoder         : Lavf57.4.100
+    Stream #0:0(eng): Audio: vorbis (libvorbis), 44100 Hz, stereo, fltp (default)
+    Metadata:
+      creation_time   : 2036-03-29 06:33:54
+      encoder         : Lavc57.6.100 libvorbis
+      major_brand     : M4A 
+      minor_version   : 0
+      compatible_brands: M4A mp42isom
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> vorbis (libvorbis))
+Press [q] to stop, [?] for help
+size=     165kB time=00:00:03.84 bitrate= 351.2kbits/s    
+video:0kB audio:160kB subtitle:0kB other streams:0kB global headers:4kB muxing overhead: 3.082367%
