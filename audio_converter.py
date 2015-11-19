@@ -1,0 +1,117 @@
+import subprocess as sp
+import os
+import sys
+
+class AudioConverter:
+    def __init__(self,file_name):
+        self.file_name = file_name
+        self.FFMPEG_BIN = "ffmpeg"
+        
+    
+    def _render_error(self,msg):
+        print msg
+        return
+
+    def convert_to_mp3(self,file):
+        """
+        @param : 
+            file: file name that is to be converted to mp3
+
+        command: ffmpeg -i input.m4a -acodec libmp3lame -ab 128k output.mp3
+        """
+        if file.split(".")[1] == "mp3":
+            return
+
+        codec = "libmp3lame"
+        input_filename = file 
+        try:
+            mp3_filename = input_filename.split(".")[0] + ".mp3"
+        except:
+            self._render_error("Error while processing file name")
+            return 
+
+        command = [self.FFMPEG_BIN,
+                    "-i",input_filename,
+                    "-acodec",codec,
+                    "-ab", "128k",
+                    mp3_filename
+                    ]
+
+        return self._convert(command)
+
+    def convert_to_ogg(self,file):
+        """
+        @param : 
+            file: file name that is to be converted to ogg
+        
+        command: ffmpeg -i input.m4a -acodec libvorbis -aq 60 -vn -ac 2 output.ogg
+        """
+        if file.split(".")[1] == "ogg":
+            return
+
+        codec = "libmp3lame"
+        input_filename = file.name #correct this file name
+
+        try:
+            ogg_filename = input_filename.split(".")[0] + ".ogg"
+        except:
+            self._render_error("Error while processing file name")
+            return 
+
+        command = [self.FFMPEG_BIN,
+                        "-i",input_filename,
+                        "-acodec",codec,
+                        "-ab", "128k",
+                        ogg_filename
+                    ]
+
+        return self._convert(command)
+
+
+
+
+    def _convert(self,command,logfile=True):
+        """
+        @param:
+            command: commanf for conversion
+        """
+
+        if logfile:
+            try:
+                log_file = open("audio_converter.log", 'a')
+            except:
+                log_file = open("audio_converter.log", 'w+')
+
+        proc = sp.Popen(command, stdout=sp.PIPE, bufsize=10**8, stderr=log_file)
+        if proc.returncode:
+            err = "\n".join(["Running : %s\n" % cmd,
+            "WARNING: this command returned an error:",
+            err.decode('utf8')])
+            
+            raise IOError(err)
+
+        del proc
+
+
+if __name__ == "__main__":
+
+    supported_format = ["mp3","ogg"]
+    convert_to = "mp3"  #default:  convert to mp3
+    _dir = os.getcwd()  #default:  get the current dir
+
+    files = []
+    files_audio_format = ["mp3","m4a","ogg","wav"]
+    
+    for f in os.listdir(_dir):
+        try:
+            if f.split(".")[1] in files_audio_format:
+                files.append(f)
+        except:
+            pass
+
+    for f in files:
+        converter = AudioConverter(f)
+        if convert_to == "mp3":
+            converter.convert_to_mp3(f)
+        elif convert_to == "ogg":
+            convert_to.convert_to_ogg(f)   
