@@ -78,9 +78,9 @@ class AudioConverter:
 
         if logfile:
             try:
-                log_file = open("audio_converter.log", 'a')
+                log_file = open("audio-converter-api.log", 'a')
             except:
-                log_file = open("audio_converter.log", 'w+')
+                log_file = open("audio-converter-api.log", 'w+')
 
         proc = sp.Popen(command, stdout=sp.PIPE, bufsize=10**8, stderr=log_file)
         if proc.returncode:
