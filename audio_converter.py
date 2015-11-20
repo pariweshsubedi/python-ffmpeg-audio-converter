@@ -95,7 +95,7 @@ class AudioConverter:
 
 """
 Local Testing:
-    - place the file to the folder with the audio files or
+    - place this file to the folder with the audio files or
       just change the _dir variable to the directory with audio files to test
 """
 if __name__ == "__main__":
