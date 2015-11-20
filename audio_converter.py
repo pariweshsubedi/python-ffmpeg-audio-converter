@@ -73,7 +73,7 @@ class AudioConverter:
     def _convert(self,command,logfile=True):
         """
         @param:
-            command: commanf for conversion
+            command: command for conversion
         """
 
         if logfile:
@@ -84,7 +84,7 @@ class AudioConverter:
 
         proc = sp.Popen(command, stdout=sp.PIPE, bufsize=10**8, stderr=log_file)
         if proc.returncode:
-            err = "\n".join(["Running : %s\n" % cmd,
+            err = "\n".join(["Running test: %s\n" % cmd,
             "WARNING: this command returned an error:",
             err.decode('utf8')])
             
@@ -93,25 +93,30 @@ class AudioConverter:
         del proc
 
 
+"""
+Local Testing:
+    - place the file to the folder with the audio files or
+      just change the _dir variable to the directory with audio files to test
+"""
 if __name__ == "__main__":
 
-    supported_format = ["mp3","ogg"]
-    convert_to = "mp3"  #default:  convert to mp3
+    output_formats = ["mp3","ogg"]
+
     _dir = os.getcwd()  #default:  get the current dir
 
     files = []
-    files_audio_format = ["mp3","m4a","ogg","wav"]
+    input_format = ["mp3","m4a","ogg","wav"]
     
     for f in os.listdir(_dir):
         try:
-            if f.split(".")[1] in files_audio_format:
+            if f.split(".")[1] in input_format:
                 files.append(f)
         except:
             pass
 
     for f in files:
         converter = AudioConverter(f)
-        if convert_to == "mp3":
+        if "mp3" in output_formats:
             converter.convert_to_mp3()
-        elif convert_to == "ogg":
-            convert_to.convert_to_ogg()   
+        if "ogg" in output_formats:
+            converter.convert_to_ogg()     
