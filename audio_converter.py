@@ -1,6 +1,7 @@
 import subprocess as sp
 import os
 import sys
+from datetime import datetime
 
 class AudioConverter:
     def __init__(self,file_name):
@@ -114,9 +115,17 @@ if __name__ == "__main__":
         except:
             pass
 
+
     for f in files:
+        t1 = datetime.now()
         converter = AudioConverter(f)
         if "mp3" in output_formats:
             converter.convert_to_mp3()
+        t2 = datetime.now()
         if "ogg" in output_formats:
-            converter.convert_to_ogg()     
+            converter.convert_to_ogg()
+        t3 = datetime.now()
+
+        print "Time to convert {0} to mp3 : {1}".format(f,t2-t1)
+        print "Time to convert {0} to ogg : {1}".format(f,t3-t2)
+        print " "
