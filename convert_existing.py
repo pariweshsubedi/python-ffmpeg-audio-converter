@@ -80,7 +80,8 @@ class AudioConverter:
 # Change the directory of audio files here
 if __name__ == "__main__":
     # rootdir = os.getcwd()  #default:  get the current dir
-    rootdir = "audio_tests/"
+    rootdir = "/usr/share/nginx/assets/"
+    # rootdir = "/opt/test/"
 
     output_formats = [".mp3",".ogg"]
 
