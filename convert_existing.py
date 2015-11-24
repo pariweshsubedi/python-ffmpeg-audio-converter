@@ -29,8 +29,6 @@ class AudioConverter:
                    "-ab", "128k",
                    mp3_filename
                    ]
-
-        # return self._convert(command)
         return command
 
     def convert_to_ogg(self):
@@ -55,7 +53,6 @@ class AudioConverter:
                    ogg_filename
                    ]
 
-        # return self._convert(command)
         return command
 
 
@@ -107,4 +104,5 @@ if __name__ == "__main__":
 
         except IOError as e:
             log_file.write(str(e))
-            pass
+        except Exception as e:
+            log_file.write(str(e))
