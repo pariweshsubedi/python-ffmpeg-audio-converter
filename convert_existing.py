@@ -5,8 +5,7 @@ import subprocess as sp
 
 class AudioConverter:
 
-    def __init__(self,file_name,logger):
-        self.logger = logger
+    def __init__(self,file_name):
         self.file_name = file_name        
         self.FFMPEG_BIN = "ffmpeg"
         self.filepath, self.ext = os.path.splitext(self.file_name)
@@ -31,7 +30,8 @@ class AudioConverter:
                    mp3_filename
                    ]
 
-        return self._convert(command)
+        # return self._convert(command)
+        return command
 
     def convert_to_ogg(self):
         """
@@ -55,26 +55,8 @@ class AudioConverter:
                    ogg_filename
                    ]
 
-        return self._convert(command)
-
-    def _convert(self, command, logfile=True):
-        """
-        @param:
-            command: command for conversion
-        """
-        try:
-            proc = sp.Popen(command, stdout=sp.PIPE,
-                            bufsize=10**8)
-
-            if proc.returncode:
-                err = "\n".join(["Audio conversion: %s\n" % command,
-                                 "WARNING: this command returned an error:"])
-                raise IOError(err)
-
-            del proc
-        except IOError as e:
-            self.logger.error('{0}'.format(e), exc_info=True)
-
+        # return self._convert(command)
+        return command
 
 
 # Change the directory of audio files here
@@ -82,21 +64,11 @@ if __name__ == "__main__":
     # rootdir = os.getcwd()  #default:  get the current dir
     rootdir = "/usr/share/nginx/assets/"
     # rootdir = "/opt/test/"
-
+    process_queue = []
     output_formats = [".mp3",".ogg"]
 
     all_files = []
     input_format = [".m4a",".wav"]
-
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    handler = logging.handlers.RotatingFileHandler(
-    filename='AudioConverter.log', maxBytes=1024, backupCount=10)
-    handler.setLevel(logging.DEBUG)
-    formatter = logging.Formatter(
-                    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
 
 
     for subdir, dirs, files in os.walk(rootdir):
@@ -107,11 +79,32 @@ if __name__ == "__main__":
                 file_path = os.path.realpath(path_from_root)
 
                 try: 
-                    converter = AudioConverter(file_path,logger)
+                    converter = AudioConverter(file_path)
                     if ".mp3" in output_formats:
-                        converter.convert_to_mp3()
+                        process_queue.append(converter.convert_to_mp3())
                     if ".ogg" in output_formats:
-                        converter.convert_to_ogg()
+                        process_queue.append(converter.convert_to_ogg())
                 except Exception as e:
                     print e
-                    logger.error('{0}'.format(e), exc_info=True)
+    
+    try:
+        log_file = open("audio_converter.log", 'a')
+    except:
+        log_file = open("audio_converter.log", 'w+')
+
+    for command in process_queue:
+        try:
+            proc = sp.Popen(command, stdout=sp.PIPE,
+                        bufsize=10**8)
+            proc.wait()
+            if proc.returncode == 1:
+                # file already exists
+                err = "\n".join(["Audio conversion: %s\n" % command,
+                "WARNING: file already exists "])
+                del proc
+                raise IOError(err)
+            del proc
+
+        except IOError as e:
+            log_file.write(str(e))
+            pass
