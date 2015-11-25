@@ -21,13 +21,14 @@ class AudioCreatedHandler(FileSystemEventHandler):
         """
         Converts a input file to mp3
 
-        command: ffmpeg -i input.m4a -acodec libmp3lame -ab 128k output.mp3
+        command: ffmpeg -n -i input.m4a -acodec libmp3lame -ab 128k output.mp3
         """
 
         codec = "libmp3lame"
         mp3_filename = filename + ".mp3"
 
         command = [self.FFMPEG_BIN,
+                   "-n",
                    "-i", path,
                    "-acodec", codec,
                    "-ab", "128k",
@@ -40,13 +41,14 @@ class AudioCreatedHandler(FileSystemEventHandler):
         """
         Converts a input file to ogg
 
-        command: ffmpeg -i input.m4a -acodec libvorbis -aq 60 -vn -ac 2 output.ogg
+        command: ffmpeg -n -i input.m4a -acodec libvorbis -aq 60 -vn -ac 2 output.ogg
         """
 
         codec = "libvorbis"
         ogg_filename = filename + ".ogg"
 
         command = [self.FFMPEG_BIN,
+                   "-n",
                    "-i", path,
                    "-acodec", codec,
                    "-aq", "60",
@@ -147,6 +149,6 @@ if __name__ == "__main__":
         main(config['dir_to_watch'])
         
         #for test purposes use ./ as dir_to_watch
-        #main('./')
+        # main('./')
     except Exception as e:
         print e
