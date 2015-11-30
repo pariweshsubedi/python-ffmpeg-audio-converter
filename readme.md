@@ -7,11 +7,10 @@ A simple ffmpeg wrapper to convert Audio to mp3 or ogg whenever a new file is ad
 Documentation for installation :
 
 1) FFMPEG installation:
-	```
+	
 	sudo add-apt-repository ppa:kirillshkrogalev/ffmpeg-next
 	sudo apt-get update
 	sudo apt-get install ffmpeg
-	```
 
 
 To convert existing files:
@@ -20,15 +19,13 @@ To convert existing files:
 
 2) Run the script to convert audio within the root dir
 
-		```
+
 		python convert_existing.py
-		```
 
 
 To start a watch process:
 
 1) Run the following to start the watch process
 
-		```
+
 		python converter.py
-		```
