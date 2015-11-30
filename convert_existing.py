@@ -2,6 +2,7 @@ import os
 import logging
 import logging.handlers
 import subprocess as sp
+import json
 
 class AudioConverter:
 
@@ -56,11 +57,23 @@ class AudioConverter:
         return command
 
 
+def load_config(config_file):
+    """
+    load the configuration from JSON file.
+    """
+    try:
+        with open('settings.json', 'r') as f:
+            return json.loads(f.read())
+    except (IOError, Exception) as e:
+        print '%s' % e
+        exit()
+
+
 # Change the directory of audio files here
 if __name__ == "__main__":
     # rootdir = os.getcwd()  #default:  get the current dir
-    rootdir = "/usr/share/nginx/assets/"
-    # rootdir = "/opt/test/"
+    rootdir = load_config('settings.json')["dir_to_watch"]
+    
     process_queue = []
     output_formats = [".mp3",".ogg"]
 

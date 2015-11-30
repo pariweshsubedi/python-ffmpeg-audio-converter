@@ -15,7 +15,7 @@ Documentation for installation :
 
 To convert existing files:
 
-1) Change the value of "rootdir" from file "convert_existing.py"
+1) Change the value of "dir_to_watch" from "settings.json"
 
 2) Run the script to convert audio within the root dir
 
