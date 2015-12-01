@@ -3,6 +3,7 @@ import logging
 import logging.handlers
 import subprocess as sp
 import json
+from multiprocessing.pool import ThreadPool
 
 class AudioConverter:
 
@@ -68,6 +69,29 @@ def load_config(config_file):
         print '%s' % e
         exit()
 
+def convert(command):
+    try:
+        log_file = open("audio_converter.log", 'a')
+    except:
+        log_file = open("audio_converter.log", 'w+')
+
+    # for command in process_queue:
+    try:
+        proc = sp.Popen(command, stdout=log_file,
+                    bufsize=10**5)
+        proc.wait()
+        if proc.returncode == 1:
+            # file already exists
+            err = "\n".join(["Audio conversion: %s\n" % command,
+            "WARNING: file already exists "])
+            del proc
+            raise IOError(err)
+        del proc
+
+    except IOError as e:
+        log_file.write(str(e))
+    except Exception as e:
+        log_file.write(str(e))
 
 # Change the directory of audio files here
 if __name__ == "__main__":
@@ -97,25 +121,13 @@ if __name__ == "__main__":
                 except Exception as e:
                     print e
     
-    try:
-        log_file = open("audio_converter.log", 'a')
-    except:
-        log_file = open("audio_converter.log", 'w+')
 
+    num = 2 # set to the number of workers (defaults to the cpu count of the machine)
+    tp = ThreadPool(num)
+    
     for command in process_queue:
-        try:
-            proc = sp.Popen(command, stdout=sp.PIPE,
-                        bufsize=10**8)
-            proc.wait()
-            if proc.returncode == 1:
-                # file already exists
-                err = "\n".join(["Audio conversion: %s\n" % command,
-                "WARNING: file already exists "])
-                del proc
-                raise IOError(err)
-            del proc
+        tp.apply_async(convert, (command,))
+    
+    tp.close()
+    tp.join()
 
-        except IOError as e:
-            log_file.write(str(e))
-        except Exception as e:
-            log_file.write(str(e))
