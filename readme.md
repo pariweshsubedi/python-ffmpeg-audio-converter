@@ -36,7 +36,7 @@ To start a watch process:
 
 2) Dual threads to handle mp3 and ogg conversion at a same time for a single file.
 
-     	python converter.py 
+     	python multi.py 
 
 
 Supervisor conf file
