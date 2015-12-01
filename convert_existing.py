@@ -97,13 +97,12 @@ def convert(command):
 if __name__ == "__main__":
     # rootdir = os.getcwd()  #default:  get the current dir
     rootdir = load_config('settings.json')["dir_to_watch"]
-    
-    process_queue = []
     output_formats = [".mp3",".ogg"]
 
     all_files = []
     input_format = [".m4a",".wav"]
-
+    num = 2 # set to the number of workers (defaults to the cpu count of the machine)
+    tp = ThreadPool(num)
 
     for subdir, dirs, files in os.walk(rootdir):
         for file in files:
@@ -115,18 +114,11 @@ if __name__ == "__main__":
                 try: 
                     converter = AudioConverter(file_path)
                     if ".mp3" in output_formats:
-                        process_queue.append(converter.convert_to_mp3())
+                        tp.apply_async(convert, (converter.convert_to_mp3(),) )
                     if ".ogg" in output_formats:
-                        process_queue.append(converter.convert_to_ogg())
+                        tp.apply_async(convert, (converter.convert_to_ogg(),) )
                 except Exception as e:
                     print e
-    
-
-    num = 2 # set to the number of workers (defaults to the cpu count of the machine)
-    tp = ThreadPool(num)
-    
-    for command in process_queue:
-        tp.apply_async(convert, (command,))
     
     tp.close()
     tp.join()
