@@ -7,9 +7,6 @@ import logging.handlers
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import subprocess as sp
-from multiprocessing.pool import ThreadPool
-import multiprocessing as mp
-from multiprocessing.dummy import Pool
 from Queue import Queue, Empty
 
 class AudioCreatedHandler(FileSystemEventHandler):
@@ -19,11 +16,6 @@ class AudioCreatedHandler(FileSystemEventHandler):
     """
     def __init__(self):
         self.FFMPEG_BIN = "ffmpeg"
-        num = None # set to the number of workers (defaults to the cpu count of the machine)
-        # files_to_convert : 1 file = 2 conversion process
-        self.files_to_convert = 1
-        self.lock = False
-        
         self.q = Queue() #file queue
         
 
@@ -69,75 +61,54 @@ class AudioCreatedHandler(FileSystemEventHandler):
 
         return self._convert(command)
 
-    def _convert(self, command, logfile=True):
+    def _convert(self, command):
         """
         @param:
             command: command for conversion
-        """
-        if logfile:
-            logger = logging.getLogger(__name__)
-            logger.setLevel(logging.DEBUG)
-            handler = logging.handlers.RotatingFileHandler(filename='requests.log', maxBytes=1024, backupCount=10)
-            handler.setLevel(logging.DEBUG)
-            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-            handler.setFormatter(formatter)
-            logger.addHandler(handler)
 
+        returns a subprocess
+        """
         try:
             proc = sp.Popen(command, stdout=sp.PIPE,
                             bufsize=10**8)
             return proc
         except IOError as e:
-            logger.error('{0}'.format(e), exc_info=True)      
+            print e
             return None
     
     def on_created(self, event):
-        
         """
         Runs when file is created.
         In this case, we create .mp3 and .ogg file.
         """
-        extensions_watched = [".m4a", ".wav"]
         
         if event.is_directory:
             return
         
         self.q.put(event.src_path)
 
-        # q is the file to convert
         while not self.q.empty():
             processes = []
-            
             try:
-                # for i in range(0,self.files_to_convert):
                 file_src = self.q.get()
                 filepath, ext = os.path.splitext(file_src)
-                print "==========="
-                print ext
-                print "==========="
-                if ext not in [".ogg",".mp3"]:
-                    if ext != ".mp3":
-                        p1 = self.convert_to_mp3(file_src,filepath)
-                        if p1:
-                            processes.append(p1)
-                    if ext != ".ogg":
-                        p2 = self.convert_to_ogg(file_src,filepath)
-                        if p2:
-                            processes.append(p2)
 
-                print "----------------"
-                print "total processes"
-                print len(processes)
-                print "----------------"
+                if ext not in [".ogg",".mp3"]:
+                    p1 = self.convert_to_mp3(file_src,filepath)
+                    if p1:
+                        processes.append(p1)
+                    
+                    p2 = self.convert_to_ogg(file_src,filepath)
+                    if p2:
+                        processes.append(p2)
 
                 for p in processes:
                     p.wait()
                     del p
 
             except Empty:
-                print "no files to convert"
+                print "empty queue get called"
                 time.sleep(1)
-
         return
 
 
@@ -179,10 +150,9 @@ if __name__ == "__main__":
     
     config = load_config('settings.json')
     try:
-        print "Watching: %s" % config['dir_to_watch']
-        # main(config['dir_to_watch'])
+        main(config['dir_to_watch'])
         
         #for test purposes use ./ as dir_to_watch
-        main('audio_tests')
+        # main('audio_tests')
     except Exception as e:
         print e
