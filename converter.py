@@ -7,6 +7,7 @@ import logging.handlers
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import subprocess as sp
+from multiprocessing.pool import ThreadPool
 
 
 class AudioCreatedHandler(FileSystemEventHandler):
@@ -16,6 +17,8 @@ class AudioCreatedHandler(FileSystemEventHandler):
     """
     def __init__(self):
         self.FFMPEG_BIN = "ffmpeg"
+        num = None # set to the number of workers (defaults to the cpu count of the machine)
+        self.tp = ThreadPool(num)
 
     def convert_to_mp3(self,path, filename):
         """
@@ -35,7 +38,7 @@ class AudioCreatedHandler(FileSystemEventHandler):
                    mp3_filename
                    ]
 
-        return self._convert(command)
+        return command
 
     def convert_to_ogg(self, path, filename):
         """
@@ -57,7 +60,7 @@ class AudioCreatedHandler(FileSystemEventHandler):
                    ogg_filename
                    ]
 
-        return self._convert(command)
+        return command
 
     def _convert(self, command, logfile=True):
         """
@@ -74,9 +77,9 @@ class AudioCreatedHandler(FileSystemEventHandler):
             logger.addHandler(handler)
 
         try:
-            time.sleep(1)
             proc = sp.Popen(command, stdout=sp.PIPE,
                             bufsize=10**8)
+            proc.wait()
             if proc.returncode:
                 err = "\n".join(["Audio conversion: %s\n" % cmd,
                 "WARNING: this command returned an error:",
@@ -101,9 +104,8 @@ class AudioCreatedHandler(FileSystemEventHandler):
         filepath, ext = os.path.splitext(event.src_path) 
 
         if ext in extensions_watched:
-            self.convert_to_mp3(event.src_path,filepath)
-            self.convert_to_ogg(event.src_path,filepath)
-
+            self.tp.apply_async(self._convert,(self.convert_to_mp3(event.src_path,filepath),) )
+            self.tp.apply_async(self._convert,(self.convert_to_ogg(event.src_path,filepath),) )
         return
 
 
