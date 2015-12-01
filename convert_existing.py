@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     all_files = []
     input_format = [".m4a",".wav"]
-    num = 2 # set to the number of workers (defaults to the cpu count of the machine)
+    num = None # set to the number of workers (defaults to the cpu count of the machine)
     tp = ThreadPool(num)
 
     for subdir, dirs, files in os.walk(rootdir):
