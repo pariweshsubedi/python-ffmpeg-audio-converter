@@ -93,7 +93,7 @@ class AudioCreatedHandler(FileSystemEventHandler):
                 file_src = self.q.get()
                 filepath, ext = os.path.splitext(file_src)
 
-                if ext not in [".ogg",".mp3"]:
+                if ext not in [".ogg",".mp3",".png"]:
                     p1 = self.convert_to_mp3(file_src,filepath)
                     if p1:
                         processes.append(p1)
