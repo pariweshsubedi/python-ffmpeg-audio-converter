@@ -110,13 +110,14 @@ if __name__ == "__main__":
             if ext in input_format:
                 path_from_root = os.path.join(subdir, file)
                 file_path = os.path.realpath(path_from_root)
-
                 try: 
                     converter = AudioConverter(file_path)
                     if ".mp3" in output_formats:
-                        tp.apply_async(convert, (converter.convert_to_mp3(),) )
+                        if not os.path.isfile(os.path.realpath(os.path.join(subdir, filepath+".mp3"))):
+                            tp.apply_async(convert, (converter.convert_to_mp3(),) )
                     if ".ogg" in output_formats:
-                        tp.apply_async(convert, (converter.convert_to_ogg(),) )
+                        if not os.path.isfile(os.path.realpath(os.path.join(subdir, filepath+".ogg"))):
+                            tp.apply_async(convert, (converter.convert_to_ogg(),) )
                 except Exception as e:
                     print e
     
