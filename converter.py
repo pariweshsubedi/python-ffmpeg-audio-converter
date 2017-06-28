@@ -20,6 +20,25 @@ class AudioCreatedHandler(FileSystemEventHandler):
         num = None # set to the number of workers (defaults to the cpu count of the machine)
         self.tp = ThreadPool(num)
 
+    def convert_to_m4a(self,path, filename):
+        """
+        Converts a input file to m4a
+
+        command: ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        """
+        codec = "aac"
+        m4a_filename = filename + ".m4a"
+        command = [self.FFMPEG_BIN,
+                   "-n",
+                   "-i", path,
+                   "-acodec", codec,
+                   "-ab", "128k",
+                   m4a_filename
+                   ]
+
+        return command
+
     def convert_to_mp3(self,path, filename):
         """
         Converts a input file to mp3
@@ -104,8 +123,10 @@ class AudioCreatedHandler(FileSystemEventHandler):
         filepath, ext = os.path.splitext(event.src_path) 
 
         if ext in extensions_watched:
-            self.tp.apply_async(self._convert,(self.convert_to_mp3(event.src_path,filepath),) )
-            self.tp.apply_async(self._convert,(self.convert_to_ogg(event.src_path,filepath),) )
+            # self.tp.apply_async(self._convert,(self.convert_to_mp3(event.src_path,filepath),) )
+            # self.tp.apply_async(self._convert,(self.convert_to_ogg(event.src_path,filepath),) )
+            self.tp.apply_async(self._convert,(self.convert_to_m4a(event.src_path,filepath),) )
+            
         return
 
 

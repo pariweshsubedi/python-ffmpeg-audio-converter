@@ -12,6 +12,25 @@ class AudioConverter:
         self.FFMPEG_BIN = "ffmpeg"
         self.filepath, self.ext = os.path.splitext(self.file_name)
 
+    def convert_to_m4a(self):
+        """
+        Converts a input file to m4a
+
+        command: ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        """
+        codec = "aac"
+        m4a_filename = self.filepath + ".m4a"
+        command = [self.FFMPEG_BIN,
+                   "-n",
+                   "-i", self.file_name,
+                   "-acodec", codec,
+                   "-ab", "128k",
+                   m4a_filename
+                   ]
+
+        return command
+
     def convert_to_mp3(self):
         """
         Converts a input file to mp3
@@ -112,6 +131,7 @@ if __name__ == "__main__":
                 file_path = os.path.realpath(path_from_root)
                 try: 
                     converter = AudioConverter(file_path)
+                    # tp.apply_async(convert, (converter.convert_to_m4a(),) )
                     if ".mp3" in output_formats:
                         if not os.path.isfile(os.path.realpath(os.path.join(subdir, filepath+".mp3"))):
                             tp.apply_async(convert, (converter.convert_to_mp3(),) )

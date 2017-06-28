@@ -17,6 +17,25 @@ class AudioCreatedHandler(FileSystemEventHandler):
     def __init__(self):
         self.FFMPEG_BIN = "ffmpeg"
         self.q = Queue() #file queue
+
+    def convert_to_m4a(self,path, filename):
+        """
+        Converts a input file to m4a
+
+        command: ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        ffmpeg -i input.wav -c:a aac -b:a 160k output.m4a
+        """
+        codec = "aac"
+        m4a_filename = filename + ".m4a"
+        command = [self.FFMPEG_BIN,
+                   "-n",
+                   "-i", path,
+                   "-acodec", codec,
+                   "-ab", "128k",
+                   m4a_filename
+                   ]
+
+        return self._convert(command)
         
 
     def convert_to_mp3(self,path, filename):
@@ -102,6 +121,13 @@ class AudioCreatedHandler(FileSystemEventHandler):
                     if p2:
                         processes.append(p2)
 
+                    if ext == ".wav":
+                        p3 = self.convert_to_m4a(file_src,filepath)
+                        if p3:
+                            processes.append(p3)
+
+
+
                 for p in processes:
                     p.wait()
                     del p
@@ -150,9 +176,10 @@ if __name__ == "__main__":
     
     config = load_config('settings.json')
     try:
-        main(config['dir_to_watch'])
+        # main(config['dir_to_watch'])
         
         #for test purposes use ./ as dir_to_watch
+        main('./')
         # main('audio_tests')
     except Exception as e:
         print e
