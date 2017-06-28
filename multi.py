@@ -176,10 +176,10 @@ if __name__ == "__main__":
     
     config = load_config('settings.json')
     try:
-        # main(config['dir_to_watch'])
+        main(config['dir_to_watch'])
         
         #for test purposes use ./ as dir_to_watch
-        main('./')
+        # main('./')
         # main('audio_tests')
     except Exception as e:
         print e
