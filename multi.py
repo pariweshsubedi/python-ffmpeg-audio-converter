@@ -121,10 +121,10 @@ class AudioCreatedHandler(FileSystemEventHandler):
                     if p2:
                         processes.append(p2)
 
-                    if ext == ".wav":
-                        p3 = self.convert_to_m4a(file_src,filepath)
-                        if p3:
-                            processes.append(p3)
+                    # if ext == ".wav":
+                    #     p3 = self.convert_to_m4a(file_src,filepath)
+                    #     if p3:
+                    #         processes.append(p3)
 
 
 
